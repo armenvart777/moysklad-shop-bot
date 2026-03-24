@@ -11,7 +11,7 @@ from config import STORES, MANAGER_USERNAME, MAX_SEARCH_RESULTS, MAX_QUERY_LENGT
 from moysklad import search_with_stock
 
 logger = logging.getLogger(__name__)
-router = Router()
+router = Router(name="main")
 
 
 class UserState(StatesGroup):
@@ -21,7 +21,7 @@ class UserState(StatesGroup):
 
 @router.message(CommandStart())
 async def cmd_start(message: Message, state: FSMContext):
-    # Верификация 18+ при старте
+    # Show age verification prompt on /start
     ...
 
 
