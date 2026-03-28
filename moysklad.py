@@ -11,6 +11,9 @@ HEADERS = {
 
 async def search_with_stock(query: str, limit: int = 10, offset: int = 0) -> tuple[list[dict], bool]:
     """Поиск товаров по названию с остатками по каждому складу."""
+    # Guard against empty queries
+    if not query or not query.strip():
+        return [], False
     async with aiohttp.ClientSession() as session:
         # Поиск товаров через МойСклад API
         products = await _fetch_products(session, query, limit, offset)
