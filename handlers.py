@@ -48,7 +48,7 @@ async def handle_search(message: Message, state: FSMContext):
 
 @router.callback_query(F.data.startswith("more_"))
 async def handle_more(callback: CallbackQuery, state: FSMContext):
-    # Подгрузка следующей страницы результатов
+    # Load next page of search results; show error if page data missing
     ...
 
 
